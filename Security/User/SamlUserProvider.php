@@ -35,10 +35,7 @@ class SamlUserProvider implements UserProviderInterface
         
         if ($auth->isAuthenticated()) {
             $attributes = $auth->getAttributes();
-            
-            //$roles[] = 'ROLE_' . mb_strtoupper($attributes['eduPersonPrimaryAffiliation'][0]);
             $roles[] = 'ROLE_USER';
-            
             return new SamlUser($username, $roles, $attributes);
         } else {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));

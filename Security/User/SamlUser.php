@@ -27,10 +27,11 @@ class SamlUser implements UserInterface, EquatableInterface
         
         $this->attributes = array();
         foreach($attributes as $key => $attribute){
-            if(count($attribute)==1)
+            if(count($attribute)==1) {
                 $this->setAttribute($key, $attribute[0]);
-            else
+            } else {
                 $this->setAttribute($key, $attribute);
+            }
         }
         
         $this->roles = array();

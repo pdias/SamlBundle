@@ -5,10 +5,5 @@
 # (c) Paulo Dias <dias.paulo@gmail.com>
 #
 #-------------------------------------------------------------------------------
-
-#_saml_secured:
-#    resource: "@SamlBundle/Controller/SamlController.php"
-#    type:     annotation
-
 saml_logout:
     pattern: /logout

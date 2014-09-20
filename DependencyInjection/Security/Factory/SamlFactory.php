@@ -52,7 +52,5 @@ class SamlFactory implements SecurityFactoryInterface
         return 'saml';
     }
 
-    public function addConfiguration(NodeDefinition $node)
-    {
-    }
+    public function addConfiguration(NodeDefinition $node){ }
 }

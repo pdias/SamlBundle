@@ -47,7 +47,12 @@ class SamlListener implements ListenerInterface
         $attributes = $auth->getAttributes();
 
         $token = new SamlUserToken();
-        $token->setUser($attributes['mail'][0]);
+
+        if(array_key_exists('mail', $attributes)) {
+            $token->setUser($attributes['mail'][0]);
+        } else {
+            throw new \InvalidArgumentException('Your provider must resturn attribute "mail".');
+        }
 
         try {
             $authToken = $this->authenticationManager->authenticate($token);
@@ -65,12 +70,6 @@ class SamlListener implements ListenerInterface
                 return $event->setResponse($authToken);
             }
         } catch (AuthenticationException $e) {
-            //$token = $this->securityContext->getToken();
-            // if ($token instanceof SamlUserToken && $this->providerKey === $token->getProviderKey()) {
-            //     $this->securityContext->setToken(null);
-            // }
-            // return;
-		
             $response = new Response();
             $response->setStatusCode(403);
             $event->setResponse($response);
