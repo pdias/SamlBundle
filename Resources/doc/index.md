@@ -61,7 +61,7 @@ public function registerBundles()
 Step 3: Configure SamlBundle
 ----------------------------
 
-Now you have to tell to the Bundle what's your service provider and the path to the simpleSAMLphp autoload.
+Now you have to tell to the Bundle what's your service provider and the path to the [simpleSAMLphp](https://simplesamlphp.org/ "simpleSAMLphp Web Page") autoload.
 
 ``` yaml
 # app/config/config.yml
