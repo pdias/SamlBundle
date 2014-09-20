@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * @author: Paulo Dias <paulo.dias@ipcb.pt>
+ * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlBundle extends Bundle 
 {

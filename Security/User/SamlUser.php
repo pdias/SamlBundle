@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle\Security\User;
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
- * @author: Paulo Dias <paulo.dias@ipcb.pt>
+ * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlUser implements UserInterface, EquatableInterface
 {

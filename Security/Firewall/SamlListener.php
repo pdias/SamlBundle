@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle\Security\Firewall;
@@ -21,7 +21,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use SamlBundle\Security\Authentication\Token\SamlUserToken;
 
 /**
- * @author: Paulo Dias <paulo.dias@ipcb.pt>
+ * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlListener implements ListenerInterface
 {

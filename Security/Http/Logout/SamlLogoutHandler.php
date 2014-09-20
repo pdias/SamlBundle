@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle\Security\Http\Logout;
@@ -18,7 +18,7 @@ use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
  *
  * @package    SamlBundle
  * @subpackage Security\Http\Logout
- * @author     Paulo Dias <paulo.dias@ipcb.pt>
+ * @author     Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlLogoutHandler implements LogoutHandlerInterface
 {

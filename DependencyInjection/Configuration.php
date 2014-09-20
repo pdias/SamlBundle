@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle\DependencyInjection;
@@ -11,7 +11,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 /**
- * @author: Paulo Dias <paulo.dias@ipcb.pt>
+ * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class Configuration implements ConfigurationInterface
 {

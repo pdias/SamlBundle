@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle\DependencyInjection;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * @author: Paulo Dias <paulo.dias@ipcb.pt>
+ * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlExtension extends Extension
 {

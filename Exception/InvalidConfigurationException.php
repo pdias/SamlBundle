@@ -2,7 +2,7 @@
 /*
  * This file is part of the SamlBundle.
  *
- * (c) Paulo Dias <paulo.dias@ipcb.pt>
+ * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
 namespace SamlBundle\Exception;
@@ -10,7 +10,7 @@ namespace SamlBundle\Exception;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException as BaseException;
 
 /**
- * @author: Paulo Dias <paulo.dias@ipcb.pt>
+ * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class InvalidConfigurationException extends BaseException
 {
