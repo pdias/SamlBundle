@@ -61,70 +61,13 @@ public function registerBundles()
 Step 3: Configure SamlBundle
 ----------------------------
 
-Bundle has to persist SSO State of the user authenticated against IDP so when IDP calls for logout in another session
-it is possible to delete that session, so it can logout the user from your app once he comes back. At this version
-of the bundle only doctrine orm driver is supported. You need to create entity class for it in your project by
-extending `AerialShip\SamlSPBundle\Entity\SSOStateEntity` class.
-
-For example:
-
-``` php
-<?php
-
-namespace Acme\SamlBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="saml_sso_state")
- */
-class SSOState extends \AerialShip\SamlSPBundle\Entity\SSOStateEntity
-{
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-    /**
-     * @param int $id
-     */
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId() {
-        return $this->id;
-    }
-
-
-}
-```
-
-After the entity class is created you should update your database schema by running
-
-``` bash
-$ php app/console doctrine:schema:update --force
-```
-
-
-Step 4: Configure SamlSpBundle
-------------------------------
-
-Now you have to tell to the Bundle what's your entity class
+Now you have to tell to the Bundle what's your service provider and the path to the simpleSAMLphp autoload.
 
 ``` yaml
 # app/config/config.yml
-aerial_ship_saml_sp:
-    driver: orm
-    sso_state_entity_class: Acme\SamlBundle\Entity\SSOState
-
+saml:
+    service_provider: 'default-sp'
+    autoload_path: '/usr/share/simplesamlphp/lib/_autoload.php'
 ```
 
 
