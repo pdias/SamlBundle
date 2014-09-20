@@ -7,7 +7,7 @@ The SamlBundle adds support for [***SAML 2.0 Service Provider***](https://simple
 
 ## License ##
 
-This bundle is under the MIT license. See the complete license in the bundle:
+This bundle is under the MIT license. See the complete license in the [bundle](https://github.com/pdias/SamlBundle/blob/master/Resources/meta/LICENSE "SamlBundle License"):
 
     Resources/meta/LICENSE
 
