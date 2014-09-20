@@ -1,8 +1,8 @@
 {
     "name": "samlbundle",
     "type": "library",
-    "description": "SamlBundle, ......",
-    "keywords": ["saml","simplesaml"],
+    "description": "The SamlBundle adds support for SAML 2.0 Service Provider in Symfony2.",
+    "keywords": ["saml","simplesaml", "simpleSAMLphp"],
     "license": "MIT",
     "authors": [
         {

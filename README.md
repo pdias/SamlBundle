@@ -5,6 +5,12 @@ The SamlBundle adds support for [***SAML 2.0 Service Provider***](https://simple
 
 - [SimpleSAMLphp Installation and Configuration](https://simplesamlphp.org/docs/stable/simplesamlphp-install "Installation and Configuration");
 
+## License ##
+
+This bundle is under the MIT license. See the complete license in the bundle:
+
+    Resources/meta/LICENSE
+
 ## Documentation ##
 
 [Getting Started With This Bundle](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/index.md)
