@@ -18,14 +18,14 @@ Installation is quick 4 steps:
 
 
 
-Step 1: Download SamlBundle with composer
+Step 1: Download **SamlBundle** with composer
 -------------------------------------------
 
 Add to composer.json to the `require` key
 
 ``` yml
     "require" : {
-        "pdias/samlbundle": "~1.0",
+        "pdias/SamlBundle": "~1.0",
     }
 ```
 
@@ -33,16 +33,16 @@ Add to composer.json to the `require` key
 And run composer to download the bundle with the command
 
 ``` bash
-    $ php composer.phar update aerialship/saml-sp-bundle
+    $ php composer.phar update pdias/SamlBundle
 ```
 
-Composer will install the bundle the the `vendor/aerialship/saml-sp-bundle` directory of your project
+Composer will install the bundle the the `vendor/pdias/SamlBundle` directory of your project
 
 
 Step 2: Enable the bundle
 -------------------------
 
-Add the SamlSpBundle the the kernel of your project:
+Add the **SamlBundle** the the kernel of your project:
 
 ``` php
 <?php
