@@ -15,8 +15,6 @@ This bundle is under the MIT license. [***See the complete license in the bundle
 
 [Getting Started With This Bundle](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/index.md)
 
-[Configuration Reference](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/configuration.md)
-
 ## Contributing ##
 
 SamlBundle is an open source project and is open for contributions.
