@@ -30,18 +30,6 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('/usr/share/simplesamlphp/lib/_autoload.php')
                     ->cannotBeEmpty()
                 ->end()
-            /*->arrayNode('admin_users')
-                ->requiresAtLeastOneElement()
-                ->prototype('array')
-                    ->children()
-                        ->scalarNode('email')
-                        ->isRequired(true)
-                    ->end()
-                    ->booleanNode('is_active')
-                        ->defaultValue(true)
-                    ->end()
-                ->end()
-            ->end()*/
         ->end();
 
         return $treeBuilder;

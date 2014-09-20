@@ -12,8 +12,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-use Symfony\Component\Filesystem\Filesystem;
-
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
  */
@@ -41,16 +39,6 @@ class SamlExtension extends Extension
             throw new \InvalidArgumentException('SamlBundle says "Configured default path to SAML autoload is not defined."');
         }
         
-        /*$fs = new Filesystem();
-        if($fs->exists($config['autoload_path'])) {
-            $container->setParameter('saml.autoload_path', $config['autoload_path']);
-        } else {
-            throw new \InvalidArgumentException('SamlBundle says "Configured default path ('.$config['autoload_path'].') to SAML autoload, does not exist."');
-        }*/
         $container->setParameter('saml.autoload_path', $config['autoload_path']);
-        
-        //if(!isset($config['redirect_route'])) {
-        //    throw new \InvalidArgumentException('SamlBundle says "Configured default path to SAML autoload is not defined."');
-        //}
     }
 }
