@@ -82,39 +82,28 @@ adding a firewall with `aerial_ship_saml_sp` configuration. Here's the minimal c
 # app/config/security.yml
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
 
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
-
+        SamlBundle\Security\User\SamlUser: plaintext
+            
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+        samlservice:
+            id: saml.service.user.provider
 
     firewalls:
-        saml:
-            pattern: ^/
-            anonymous: true
-            aerial_ship_saml_sp:
-                local_logout_path: /logout
-                provider: in_memory
-                services:
-                    somename:
-                        idp:
-                            file: "@AcmeSamlBundle/Resources/idp-FederationMetadata.xml"
-                        sp:
-                            config:
-                                entity_id: https://mysite.com/
-            logout:
-                path: /logout
 
-    access_control:
-        - { path: ^/secure, roles: ROLE_USER }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        saml_secured:
+            provider: samlservice
+            saml:
+            context: saml_context
+            logout:
+              path: /logout
+              target: /
+
+        anonymous:
+            pattern:    ^/
+            anonymous:  ~
+
 ```
 
 Full configuration you can see at [Configuration Reference](configuration.md).
