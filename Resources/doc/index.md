@@ -9,7 +9,7 @@ This version of bundle requires Symfony 2.2+
 Installation
 ------------
 
-Installation is quick 4 steps:
+Installation is quick 5 steps:
 
 1. Download SamlBundle with composer
 2. Enable the bundle
