@@ -11,7 +11,7 @@ The SamlBundle adds support for [***SAML 2.0 Service Provider***](https://simple
 
 [Configuration Reference](src/SamlBundle/Resources/doc/configuration.md)
 
-## CONTRIBUTING ##
+## Contributing ##
 
 SamlBundle is an open source project and is open for contributions.
 
