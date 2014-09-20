@@ -1,0 +1,14 @@
+#-------------------------------------------------------------------------------
+#
+# This file is part of the SamlBundle.
+#
+# (c) Paulo Dias <paulo.dias@ipcb.pt>
+#
+#-------------------------------------------------------------------------------
+
+#_saml_secured:
+#    resource: "@SamlBundle/Controller/SamlController.php"
+#    type:     annotation
+
+saml_logout:
+    pattern: /logout
