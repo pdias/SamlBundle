@@ -7,7 +7,7 @@ The SamlBundle adds support for [***SAML 2.0 Service Provider***](https://simple
 
 ## Documentation ##
 
-[Getting Started](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/index.md)
+[Getting Started With This Bundle](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/index.md)
 
 [Configuration Reference](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/configuration.md)
 
