@@ -1,4 +1,4 @@
-security.xml
+security.yml
 ------------
 
     security:

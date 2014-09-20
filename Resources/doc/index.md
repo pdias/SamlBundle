@@ -74,7 +74,7 @@ saml:
 Step 5: Configure application's security.yml
 --------------------------------------------
 
-In order Symfony's security component to use the SamlSpBundle you must configure it in the `security.yml` file by
+In order Symfony's security component to use the ***SamlBundle*** you must configure it in the `security.yml` file by
 adding a firewall with `aerial_ship_saml_sp` configuration. Here's the minimal configuration:
 
 ``` yaml
@@ -120,7 +120,7 @@ Full configuration you can see at [Configuration Reference](configuration.md).
 For details about user provider check the [User Provider](user_provider.md) documentation.
 
 
-Step 6: Import SamlSpBundle routing
+Step 6: Import SamlBundle routing
 -----------------------------------
 
 You need to import routing files with default paths for SAML login, assertion consumer, logout, discovery and metadata.
@@ -138,12 +138,6 @@ aerialship_saml_sp_bundle:
 > If you are changing default paths for the saml sp listener then you would need to ensure those paths
 > are defined in the routing and you would need to do that yourself since only default paths are defined
 > in the SamlSpBundle routing.
-
-
-Step 7: Exchange metadata
--------------------------
-
-Download your SP metadata by visiting the (configurable) URL `/saml/sp/FederationMetadata.xml` and send the file to the IdP. Save the IdP metadata in your bundle at the configured location (e.g. `@AcmeSamlBundle/Resources/idp-FederationMetadata.xml`).
 
 
 Next Steps
