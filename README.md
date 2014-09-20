@@ -15,6 +15,9 @@ The SamlBundle adds support for [***SAML 2.0 Service Provider***](https://simple
 
 SamlBundle is an open source project and is open for contributions.
 
+- [List of contributors](https://github.com/pdias/SamlBundle/graphs/contributors)
+
+
 
 Credits
 ------
