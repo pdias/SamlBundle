@@ -75,7 +75,7 @@ saml:
 Step 4: Configure application's security.yml
 --------------------------------------------
 
-In order Symfony's security component to use the ***SamlBundle*** you must configure it in the `security.yml` file by defining ***encoders***, ***provider*** and a ***firewall***. Here's a minimal example:
+In order Symfony's security component to use the ***SamlBundle*** you must configure it in the `security.yml` file by defining ***encoders***, ***providers*** and a ***firewalls***. Here's a minimal example:
 
 ``` yaml
 # app/config/security.yml
@@ -103,30 +103,12 @@ security:
 Step 5: Import SamlBundle routing
 -----------------------------------
 
-You need to import routing files with default paths for SAML login, assertion consumer, logout, discovery and metadata.
+You need to import routing files with default paths for ***SAML*** login.
 
 ``` yml
 # app/config/routing.yml
 
-aerialship_saml_sp_bundle:
-    resource: "@AerialShipSamlSPBundle/Resources/config/routing.yml"
+saml_bundle:
+    resource: "@pdiasSamlBundle/Resources/config/routing.yml"
 
 ```
-
-**Note:**
-
-> If you are changing default paths for the saml sp listener then you would need to ensure those paths
-> are defined in the routing and you would need to do that yourself since only default paths are defined
-> in the SamlSpBundle routing.
-
-
-Next Steps
-----------
-
-This document explains basic setup of the SamlSpBundle, after which you can learn about more advanced features
-and usages of the bundle.
-
-Following documents are available:
-
-* [Configuration Reference](configuration.md)
-* [User Provider](user_provider.md)
