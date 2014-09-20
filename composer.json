@@ -1,12 +1,15 @@
 {
-    "name": "samlbundle",
+    "name": "pdias/samlbundle",
     "type": "library",
     "description": "The SamlBundle adds support for SAML 2.0 Service Provider in Symfony2.",
     "keywords": ["saml","simplesaml", "simpleSAMLphp"],
+    "homepage": "https://github.com/pdias/SamlBundle",
     "license": "MIT",
     "authors": [
         {
-            "name": "Paulo Dias"
+            "name": "Paulo Dias",
+            "email": "dias.paulo@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
