@@ -18,10 +18,10 @@ Installation is quick 4 steps:
 
 
 
-Step 1: Download **SamlBundle** with composer
+Step 1: Download SamlBundle with composer
 -------------------------------------------
 
-Add to composer.json to the `require` key
+Add to ***composer.json*** to the `require` key
 
 ``` yml
     "require" : {
@@ -42,7 +42,7 @@ Composer will install the bundle the the `vendor/pdias/SamlBundle` directory of 
 Step 2: Enable the bundle
 -------------------------
 
-Add the **SamlBundle** the the kernel of your project:
+Add the ***SamlBundle*** the the kernel of your project:
 
 ``` php
 <?php
@@ -52,14 +52,14 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new SamlBundle\SamlBundle(),
+        new pdias\SamlBundle(),
     );
 }
 ```
 
 
-Step 3: Create your SSO State Entity class
-------------------------------------------
+Step 3: Configure SamlBundle
+----------------------------
 
 Bundle has to persist SSO State of the user authenticated against IDP so when IDP calls for logout in another session
 it is possible to delete that session, so it can logout the user from your app once he comes back. At this version
