@@ -1,5 +1,4 @@
-SamlBundle Getting Started
-============================
+# SamlBundle Getting Started #
 
 Prerequisites
 -------------
@@ -22,15 +21,14 @@ Installation is quick 4 steps:
 Step 1: Download SamlBundle with composer
 -------------------------------------------
 
-Add SamlBundle to your composer.json requirements:
+Add to composer.json to the `require` key
 
-```js
-{
-    "require": {
-        "aerialship/saml-sp-bundle": "dev-master"
+``` yml
+    "require" : {
+        "pdias/samlbundle": "~1.0",
     }
-}
 ```
+
 
 And run composer to download the bundle with the command
 
