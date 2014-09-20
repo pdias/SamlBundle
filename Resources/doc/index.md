@@ -15,6 +15,7 @@ Installation is quick 4 steps:
 2. Enable the bundle
 3. Configure SamlBundle
 4. Configure application's security.yml
+5. Import SamlBundle routing
 
 
 
@@ -71,7 +72,7 @@ saml:
 ```
 
 
-Step 5: Configure application's security.yml
+Step 4: Configure application's security.yml
 --------------------------------------------
 
 In order Symfony's security component to use the ***SamlBundle*** you must configure it in the `security.yml` file by
@@ -120,7 +121,7 @@ Full configuration you can see at [Configuration Reference](configuration.md).
 For details about user provider check the [User Provider](user_provider.md) documentation.
 
 
-Step 6: Import SamlBundle routing
+Step 5: Import SamlBundle routing
 -----------------------------------
 
 You need to import routing files with default paths for SAML login, assertion consumer, logout, discovery and metadata.
@@ -150,4 +151,3 @@ Following documents are available:
 
 * [Configuration Reference](configuration.md)
 * [User Provider](user_provider.md)
-* [Certificates and Signing](signing_and_certificates.md)
