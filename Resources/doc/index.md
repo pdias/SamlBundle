@@ -26,7 +26,7 @@ Add to ***composer.json*** to the `require` key
 
 ``` yml
     "require" : {
-        "pdias/SamlBundle": "~1.0",
+        "pdias/samlbundle": "dev-master",
     }
 ```
 
@@ -34,7 +34,7 @@ Add to ***composer.json*** to the `require` key
 And run composer to download the bundle with the command
 
 ``` bash
-    $ php composer.phar update pdias/SamlBundle
+    $ php composer.phar update pdias/samlbundle
 ```
 
 Composer will install the bundle the the `vendor/pdias/SamlBundle` directory of your project
