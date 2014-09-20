@@ -75,8 +75,7 @@ saml:
 Step 4: Configure application's security.yml
 --------------------------------------------
 
-In order Symfony's security component to use the ***SamlBundle*** you must configure it in the `security.yml` file by
-adding a firewall with `aerial_ship_saml_sp` configuration. Here's the minimal configuration:
+In order Symfony's security component to use the ***SamlBundle*** you must configure it in the `security.yml` file by defining ***encoders***, ***provider*** and a ***firewall***. Here's a minimal example:
 
 ``` yaml
 # app/config/security.yml
@@ -99,16 +98,7 @@ security:
             logout:
               path: /logout
               target: /
-
-        anonymous:
-            pattern:    ^/
-            anonymous:  ~
-
 ```
-
-Full configuration you can see at [Configuration Reference](configuration.md).
-For details about user provider check the [User Provider](user_provider.md) documentation.
-
 
 Step 5: Import SamlBundle routing
 -----------------------------------
