@@ -13,7 +13,6 @@
         }
     ],
     "require": {
-        "php": ">=5.2.4",
-        "simplesamlphp/simplesamlphp": ">=1.0"
+        "php": ">=5.2.4"
     }
 }
