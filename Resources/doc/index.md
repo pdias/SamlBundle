@@ -26,7 +26,7 @@ Add to ***composer.json*** to the `require` key
 
 ``` yml
     "require" : {
-        "pdias/samlbundle": "dev-master",
+        "pdias/saml-bundle": "dev-master",
     }
 ```
 
@@ -34,10 +34,10 @@ Add to ***composer.json*** to the `require` key
 And run composer to download the bundle with the command
 
 ``` bash
-    $ php composer.phar update pdias/samlbundle
+    $ php composer.phar update pdias/saml-bundle
 ```
 
-Composer will install the bundle the the `vendor/pdias/SamlBundle` directory of your project
+Composer will install the bundle the the `vendor/pdias/saml-bundle` directory of your project
 
 
 Step 2: Enable the bundle
@@ -53,7 +53,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new pdias\SamlBundle(),
+        new PDias\SamlBundle\SamlBundle(),
     );
 }
 ```
@@ -82,7 +82,7 @@ In order Symfony's security component to use the ***SamlBundle*** you must confi
 security:
     encoders:
 
-        SamlBundle\Security\User\SamlUser: plaintext
+        PDias\SamlBundle\Security\User\SamlUser: plaintext
             
     providers:
 
