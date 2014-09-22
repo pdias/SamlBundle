@@ -66,6 +66,7 @@ Now you have to tell to the Bundle what's your service provider and the path to 
 
 ``` yaml
 # app/config/config.yml
+
 saml:
     service_provider: 'default-sp'
     autoload_path: '/usr/share/simplesamlphp/lib/_autoload.php'
@@ -79,6 +80,7 @@ In order Symfony's security component to use the ***SamlBundle*** you must confi
 
 ``` yaml
 # app/config/security.yml
+
 security:
     encoders:
 
