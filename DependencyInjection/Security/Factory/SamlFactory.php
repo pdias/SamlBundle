@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\DependencyInjection\Security\Factory;
+namespace PDias\SamlBundle\DependencyInjection\Security\Factory;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
-//use SamlBundle\Exception\InvalidConfigurationException;
+//use PDias\SamlBundle\Exception\InvalidConfigurationException;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
