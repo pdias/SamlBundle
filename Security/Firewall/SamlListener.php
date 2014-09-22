@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\Security\Firewall;
+namespace PDias\SamlBundle\Security\Firewall;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -18,7 +18,7 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use SamlBundle\Security\Authentication\Token\SamlUserToken;
+use PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
