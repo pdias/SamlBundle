@@ -1,6 +1,6 @@
 # SamlBundle #
 
-The SamlBundle adds support for [***SAML 2.0 Service Provider***](https://simplesamlphp.org/ "simpleSAMLphp Web Page") in ***Symfony2***. It provides security listener that can be configured to authenticate users against one or more ***SAML Identity Providers***.
+The ***SamlBundle*** adds support for [***SAML 2.0 Service Provider***](https://simplesamlphp.org/ "simpleSAMLphp Web Page") in ***Symfony2***. It provides security listener that can be configured to authenticate users against one or more ***SAML Identity Providers***.
 
 
 - [SimpleSAMLphp Installation and Configuration](https://simplesamlphp.org/docs/stable/simplesamlphp-install "Installation and Configuration");
@@ -17,7 +17,7 @@ This bundle is under the MIT license. [***See the complete license in the bundle
 
 ## Contributing ##
 
-SamlBundle is an open source project and is open for contributions.
+***SamlBundle*** is an open source project and is open for contributions.
 
 - [List of contributors](https://github.com/pdias/SamlBundle/graphs/contributors)
 

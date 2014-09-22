@@ -3,7 +3,7 @@
 Prerequisites
 -------------
 
-This version of bundle requires Symfony 2.2+
+This version of bundle requires ***Symfony 2.2+***
 
 
 Installation
@@ -11,11 +11,11 @@ Installation
 
 Installation is quick 5 steps:
 
-1. Download SamlBundle with composer
+1. Download ***SamlBundle*** with composer
 2. Enable the bundle
-3. Configure SamlBundle
+3. Configure ***SamlBundle***
 4. Configure application's security.yml
-5. Import SamlBundle routing
+5. Import ***SamlBundle*** routing
 
 
 
