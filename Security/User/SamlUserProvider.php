@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\Security\User;
+namespace PDias\SamlBundle\Security\User;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -53,6 +53,6 @@ class SamlUserProvider implements UserProviderInterface
 
     public function supportsClass($class)
     {
-        return $class === 'SamlBundle\Security\User\SamlUser';
+        return $class === 'PDias\SamlBundle\Security\User\SamlUser';
     }
 }
