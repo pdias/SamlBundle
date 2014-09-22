@@ -1,6 +1,6 @@
 {
     "name": "pdias/samlbundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "description": "The SamlBundle adds support for SAML 2.0 Service Provider in Symfony2.",
     "keywords": ["saml","simplesaml", "simpleSAMLphp"],
     "homepage": "https://github.com/pdias/SamlBundle",
