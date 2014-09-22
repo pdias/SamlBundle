@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\Security\Http\Logout;
+namespace PDias\SamlBundle\Security\Http\Logout;
 
 //use Symfony\Component\HttpFoundation\RedirectResponse; 
 use Symfony\Component\HttpFoundation\Request; 
