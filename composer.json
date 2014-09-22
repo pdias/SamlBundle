@@ -14,5 +14,12 @@
     ],
     "require": {
         "php": ">=5.2.4"
-    }
+    },
+    "autoload": {
+        "psr-0": {
+            "pdias\\SamlBundle": ""
+        }
+    },
+    "target-dir": "pdias/SamlBundle"
+
 }
