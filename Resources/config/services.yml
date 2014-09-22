@@ -6,10 +6,10 @@
 #
 #-------------------------------------------------------------------------------
 parameters:
-    saml.service.user.provider.class: SamlBundle\Security\User\SamlUserProvider
-    saml.security.authentication.provider.class: SamlBundle\Security\Authentication\Provider\SamlProvider
-    saml.security.firewall.listener.class: SamlBundle\Security\Firewall\SamlListener
-    saml.security.http.logout.handler.class: SamlBundle\Security\Http\Logout\SamlLogoutHandler
+    saml.service.user.provider.class: PDias\SamlBundle\Security\User\SamlUserProvider
+    saml.security.authentication.provider.class: PDias\SamlBundle\Security\Authentication\Provider\SamlProvider
+    saml.security.firewall.listener.class: PDias\SamlBundle\Security\Firewall\SamlListener
+    saml.security.http.logout.handler.class: PDias\SamlBundle\Security\Http\Logout\SamlLogoutHandler
 
 services:
     saml.security.authentication.provider:
