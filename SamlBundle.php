@@ -7,7 +7,7 @@
  */
 namespace PDias\SamlBundle;
 
-use SamlBundle\DependencyInjection\Security\Factory\SamlFactory;
+use PDias\SamlBundle\DependencyInjection\Security\Factory\SamlFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
