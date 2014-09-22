@@ -109,6 +109,6 @@ You need to import routing files with default paths for ***SAML*** login.
 # app/config/routing.yml
 
 saml_bundle:
-    resource: "@pdiasSamlBundle/Resources/config/routing.yml"
+    resource: "@SamlBundle/Resources/config/routing.yml"
 
 ```
