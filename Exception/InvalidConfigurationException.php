@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\Exception;
+namespace PDias\SamlBundle\Exception;
 
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException as BaseException;
 
