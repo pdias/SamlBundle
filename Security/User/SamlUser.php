@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\Security\User;
+namespace PDias\SamlBundle\Security\User;
 
 use Symfony\Component\Security\Core\Role\RoleInterface;
 use Symfony\Component\Security\Core\Role\Role;
