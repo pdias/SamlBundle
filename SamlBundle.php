@@ -5,7 +5,7 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle;
+namespace PDias\SamlBundle;
 
 use SamlBundle\DependencyInjection\Security\Factory\SamlFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
