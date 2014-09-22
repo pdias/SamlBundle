@@ -1,0 +1,23 @@
+{
+    "name": "pdias/saml-bundle",
+    "type": "symfony-bundle",
+    "description": "The SamlBundle adds support for SAML 2.0 Service Provider in Symfony2.",
+    "keywords": ["saml","simplesaml", "simpleSAMLphp"],
+    "homepage": "https://github.com/pdias/SamlBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paulo Dias",
+            "email": "dias.paulo@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.4"
+    },
+    "autoload": {
+        "psr-0": { "PDias\\SamlBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "PDias/SamlBundle"
+}
