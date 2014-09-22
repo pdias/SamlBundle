@@ -5,14 +5,14 @@
  * (c) Paulo Dias <dias.paulo@gmail.com>
  *
  */
-namespace SamlBundle\Security\Authentication\Provider;
+namespace PDias\SamlBundle\Security\Authentication\Provider;
 
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
-use SamlBundle\Security\Authentication\Token\SamlUserToken;
+use PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
