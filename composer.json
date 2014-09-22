@@ -1,5 +1,5 @@
 {
-    "name": "pdias/saml-bundle",
+    "name": "pdias/samlbundle",
     "type": "symfony-bundle",
     "description": "The SamlBundle adds support for SAML 2.0 Service Provider in Symfony2.",
     "keywords": ["saml","simplesaml", "simpleSAMLphp"],
@@ -16,7 +16,6 @@
         "php": ">=5.2.4"
     },
     "autoload": {
-        "psr-0": { "PDias\\SamlBundle": "" }
-    },
-    "target-dir": "PDias/SamlBundle"
+        "psr-0": { "pdias\\SamlBundle": "" }
+    }
 }
