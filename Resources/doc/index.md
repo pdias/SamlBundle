@@ -70,6 +70,7 @@ Now you have to tell to the Bundle what's your service provider and the path to 
 saml:
     service_provider: 'default-sp'
     autoload_path: '/usr/share/simplesamlphp/lib/_autoload.php'
+    authentication_field: 'mail'
 ```
 
 

@@ -28,14 +28,16 @@ class SamlListener implements ListenerInterface
     protected $securityContext;
     protected $authenticationManager;
     protected $serviceprovider;
+    protected $authenticationField;
     protected $dispatcher;
 
-    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $serviceprovider, EventDispatcherInterface $dispatcher = null)
+    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $serviceprovider, $authenticationField, EventDispatcherInterface $dispatcher = null)
     {
         $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
         $this->dispatcher = $dispatcher;
         $this->serviceprovider = $serviceprovider;
+        $this->authenticationField = $authenticationField;
     }
 
     public function handle(GetResponseEvent $event)
@@ -48,10 +50,10 @@ class SamlListener implements ListenerInterface
 
         $token = new SamlUserToken();
 
-        if(array_key_exists('mail', $attributes)) {
-            $token->setUser($attributes['mail'][0]);
+        if(array_key_exists($this->authenticationField, $attributes)) {
+            $token->setUser($attributes[$this->authenticationField][0]);
         } else {
-            throw new \InvalidArgumentException('Your provider must resturn attribute "mail".');
+            throw new \InvalidArgumentException(sprintf('Your provider must return attribute "%s".', $this->authenticationField));
         }
 
         try {

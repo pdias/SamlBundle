@@ -40,5 +40,6 @@ class SamlExtension extends Extension
         }
         
         $container->setParameter('saml.autoload_path', $config['autoload_path']);
+        $container->setParameter('saml.authentication_field', $config['authentication_field']);
     }
 }

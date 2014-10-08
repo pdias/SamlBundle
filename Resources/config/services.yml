@@ -18,7 +18,7 @@ services:
 
     saml.security.authentication.listener:
         class: "%saml.security.firewall.listener.class%"
-        arguments: [@security.context, @security.authentication.manager, %saml.service_provider%, @event_dispatcher]
+        arguments: [@security.context, @security.authentication.manager, %saml.service_provider%, %saml.authentication_field%, @event_dispatcher]
 
     saml.service.user.provider:
         class: %saml.service.user.provider.class%
