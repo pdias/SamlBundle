@@ -115,3 +115,16 @@ saml_bundle:
     resource: "@SamlBundle/Resources/config/routing.yml"
 
 ```
+
+Logout
+------------
+
+To logout user just use the route ***saml_logout***.
+
+Twig example:
+
+``` twig
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p><a href="{{path('saml_logout')}}">SAML Logout</a>
+    {% endif %}
+```
