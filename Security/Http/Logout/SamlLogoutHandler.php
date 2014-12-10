@@ -32,10 +32,13 @@ class SamlLogoutHandler implements LogoutHandlerInterface
     public function logout(Request $request, Response $response, TokenInterface $token)
     {
         $auth = new \SimpleSAML_Auth_Simple($this->serviceprovider); 
-        $auth->requireAuth(); 
         
         if($auth->isAuthenticated()) {
-            $auth->logout();
+            if(method_exists($response, 'getTargetUrl')) {
+                $auth->logout($response->getTargetUrl());
+            } else {
+                $auth->logout();
+            }
         }
     }
 }
