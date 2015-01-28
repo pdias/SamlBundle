@@ -78,7 +78,30 @@ class SamlUser implements UserInterface, EquatableInterface
      */
     public function addRole($role)
     {
-        $this->roles[] = $role;
+        if (is_string($role)) {
+            $role = new Role($role);
+        } elseif (!$role instanceof RoleInterface) {
+            throw new \InvalidArgumentException(sprintf('Role must be a string or RoleInterface instance, but got %s.', gettype($role)));
+        }
+        
+        if(!\in_array($role, $this->roles)) {
+            $this->roles[] = $role;
+        }
+    }
+    
+    /**
+     * @param string $role
+     *
+     * @return boolean
+     */
+    public function hasRole($role)
+    {
+        foreach ($this->roles as $k => $r) { 
+            $roles[$k] = $r instanceof RoleInterface ? $r->getRole() : (string) $r;  
+        } 
+        $roles = array_flip(array_flip($roles));
+        
+        return in_array($role, $roles);
     }
     
     /**
