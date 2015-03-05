@@ -32,11 +32,13 @@ class SamlFactory extends AbstractFactory
         return 'saml';
     }
     
-    protected function getListenerId() {
+    protected function getListenerId()
+    {
         return 'saml.security.authentication.listener';
     }
 
-    protected function createAuthProvider(ContainerBuilder $container, $id, $config, $userProviderId) {
+    protected function createAuthProvider(ContainerBuilder $container, $id, $config, $userProviderId)
+    {
         $authProviderId = 'security.authentication.provider.saml.'.$id;
         $definition =$container
             ->setDefinition($authProviderId, new DefinitionDecorator('saml.security.authentication.provider'))
