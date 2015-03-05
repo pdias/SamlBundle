@@ -62,12 +62,14 @@ class SamlFactory extends AbstractFactory
         $container->setDefinition($listenerId, $listener);
 		
         //Logout listener
-        $logoutListener = $container->getDefinition('security.logout_listener.'.$id);
-        $samlListenerId = 'security.logout.handler.saml';
-        
-        //Add logout handler
-        $container->setDefinition($samlListenerId, new DefinitionDecorator('saml.security.http.logout'));
-        $logoutListener->addMethodCall('addHandler', array(new Reference($samlListenerId)));
+        if($container->hasDefinition('security.logout_listener.'.$id)) {
+            $logoutListener = $container->getDefinition('security.logout_listener.'.$id);
+            $samlListenerId = 'security.logout.handler.saml';
+
+            //Add logout handler
+            $container->setDefinition($samlListenerId, new DefinitionDecorator('saml.security.http.logout'));
+            $logoutListener->addMethodCall('addHandler', array(new Reference($samlListenerId)));
+        }
 
         return $listenerId;
     }
