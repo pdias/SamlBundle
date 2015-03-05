@@ -5,28 +5,22 @@
 # (c) Paulo Dias <dias.paulo@gmail.com>
 #
 #-------------------------------------------------------------------------------
-parameters:
-    saml.service.user.provider.class: PDias\SamlBundle\Security\User\SamlUserProvider
-    saml.security.authentication.provider.class: PDias\SamlBundle\Security\Authentication\Provider\SamlProvider
-    saml.security.firewall.listener.class: PDias\SamlBundle\Security\Firewall\SamlListener
-    saml.security.http.logout.handler.class: PDias\SamlBundle\Security\Http\Logout\SamlLogoutHandler
-
 services:
     saml.security.authentication.provider:
-        class: "%saml.security.authentication.provider.class%"
+        class: PDias\SamlBundle\Security\Authentication\Provider\SamlProvider
         arguments: ['', %kernel.cache_dir%/security/nonces]
 
     saml.security.authentication.listener:
-        class: "%saml.security.firewall.listener.class%"
+        class: PDias\SamlBundle\Security\Firewall\SamlListener
         arguments: [@security.context, @security.authentication.manager, %saml.service_provider%, %saml.authentication_field%, @event_dispatcher]
 
     saml.service.user.provider:
-        class: %saml.service.user.provider.class%
+        class: PDias\SamlBundle\Security\User\SamlUserProvider
         arguments:
             - %saml.service_provider%
             - %saml.autoload_path%
 
     saml.security.http.logout:
-        class: "%saml.security.http.logout.handler.class%"
+        class: PDias\SamlBundle\Security\Http\Logout\SamlLogoutHandler
         arguments:
             - %saml.service_provider%
