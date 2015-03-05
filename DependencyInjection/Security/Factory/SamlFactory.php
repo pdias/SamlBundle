@@ -7,41 +7,21 @@
  */
 namespace PDias\SamlBundle\DependencyInjection\Security\Factory;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
-
-use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
-//use PDias\SamlBundle\Exception\InvalidConfigurationException;
+use Symfony\Component\DependencyInjection\ContainerBuilder,
+    Symfony\Component\DependencyInjection\Reference,
+    Symfony\Component\DependencyInjection\DefinitionDecorator,
+    Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\AbstractFactory;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
  */
-class SamlFactory implements SecurityFactoryInterface
+class SamlFactory extends AbstractFactory
 {
-    public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
-    {
-        //Provider
-        $providerId = 'security.authentication.provider.saml.'.$id;
-        $container
-            ->setDefinition($providerId, new DefinitionDecorator('saml.security.authentication.provider'))
-            ->replaceArgument(0, new Reference($userProvider));
-
-        //Listener
-        $listenerId = 'security.authentication.listener.saml.'.$id;
-        $listener = $container->setDefinition($listenerId, new DefinitionDecorator('saml.security.authentication.listener'));
-		
-        $logoutListener = $container->getDefinition('security.logout_listener.'.$id);
-
-        $samlListenerId = 'security.logout.handler.saml';
-        $samlListener = $container->setDefinition($samlListenerId, new DefinitionDecorator('saml.security.http.logout'));
-
-        $logoutListener->addMethodCall('addHandler', array(new Reference($samlListenerId)));
-        
-        return array($providerId, $listenerId, $defaultEntryPoint);
-    }
-
+    public function __construct() 
+    { 
+        $this->addOption('create_user_if_not_exists', false); 
+    } 
+    
     public function getPosition()
     {
         return 'pre_auth';
@@ -51,6 +31,45 @@ class SamlFactory implements SecurityFactoryInterface
     {
         return 'saml';
     }
+    
+    protected function getListenerId() {
+        return 'saml.security.authentication.listener';
+    }
 
-    public function addConfiguration(NodeDefinition $node){ }
+    protected function createAuthProvider(ContainerBuilder $container, $id, $config, $userProviderId) {
+        $authProviderId = 'security.authentication.provider.saml.'.$id;
+        $definition =$container
+            ->setDefinition($authProviderId, new DefinitionDecorator('saml.security.authentication.provider'))
+            ->replaceArgument(0, new Reference($userProviderId));
+        
+        // with user provider 
+        if (isset($config['provider'])) { 
+            $definition 
+                ->addArgument(new Reference($userProviderId)) 
+                ->addArgument(new Reference('security.user_checker')) 
+                ->addArgument($config['create_user_if_not_exists']) 
+            ; 
+        } 
+
+        return $authProviderId;
+    }
+
+    protected function createListener($container, $id, $config, $userProvider)
+    {
+        $listenerId = $this->getListenerId();
+        $listener = new DefinitionDecorator($listenerId);
+        $listenerId .= '.'.$id;
+        $container->setDefinition($listenerId, $listener);
+		
+        //Logout listener
+        $logoutListener = $container->getDefinition('security.logout_listener.'.$id);
+        $samlListenerId = 'security.logout.handler.saml';
+        
+        //Add logout handler
+        $container->setDefinition($samlListenerId, new DefinitionDecorator('saml.security.http.logout'));
+        $logoutListener->addMethodCall('addHandler', array(new Reference($samlListenerId)));
+
+        return $listenerId;
+    }
+    
 }
