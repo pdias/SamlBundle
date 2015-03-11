@@ -1,6 +1,6 @@
 # SamlBundle #
 
-[![knpbundles.com](http://knpbundles.com/KnpLabs/KnpSnappyBundle/badge-short)](http://knpbundles.com/pdias/SamlBundle)
+[![knpbundles.com](http://knpbundles.com/pdias/SamlBundle/badge-short)](http://knpbundles.com/pdias/SamlBundle)
 
 The ***SamlBundle*** adds support for [***SAML 2.0 Service Provider***](https://simplesamlphp.org/ "simpleSAMLphp Web Page") in ***Symfony2***. It provides security listener that can be configured to authenticate users against one or more ***SAML Identity Providers***.
 
