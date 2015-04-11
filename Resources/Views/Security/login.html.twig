@@ -1,7 +1,0 @@
-{% extends "SamlBundle::layout.html.twig" %}
-
-{% trans_default_domain 'SamlBundle' %}
-
-{% block saml_user_content %}
-    <a href="{{ path("saml_login_check") }}">{{ 'security.login.link'|trans }}</a>
-{% endblock saml_user_content %}
