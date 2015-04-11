@@ -14,8 +14,26 @@ use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
  */
 class SamlUserToken extends AbstractToken
 {
+    private $directEntry = true;
+    
     public function getCredentials()
     {
         return '';
+    }
+    
+    public function setDirectEntry($directEntry)
+    {
+        $this->directEntry = $directEntry;
+        return $this;
+    }
+    
+    public function getDirectEntry()
+    {
+        return $this->directEntry;
+    }
+    
+    public function isDirectEntry()
+    {
+        return $this->directEntry;
     }
 }
