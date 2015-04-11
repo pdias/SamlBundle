@@ -5,5 +5,17 @@
 # (c) Paulo Dias <dias.paulo@gmail.com>
 #
 #-------------------------------------------------------------------------------
+saml_login:
+    pattern: /login-saml
+    defaults:
+        _controller: SamlBundle:Security:login
+
+saml_login_check:
+    pattern: /login-check-saml
+    defaults:
+        _controller: SamlBundle:Security:check
+
 saml_logout:
     pattern: /logout-saml
+    defaults:
+        _controller: SamlBundle:Security:logout
