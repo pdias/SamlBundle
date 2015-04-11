@@ -16,6 +16,7 @@ This bundle is under the MIT license. [***See the complete license in the bundle
 ## Documentation ##
 
 [Getting Started With This Bundle](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/index.md)
+[Integration with FOSUserBundle](https://github.com/pdias/SamlBundle/blob/master/Resources/doc/integration_fosuser.md)
 
 ## Contributing ##
 
