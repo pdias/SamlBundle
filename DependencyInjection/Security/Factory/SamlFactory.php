@@ -22,8 +22,6 @@ class SamlFactory extends AbstractFactory
     public function getPosition()
     {
         return 'pre_auth';
-        //return 'http';
-        //return 'form';
     }
 
     public function getKey()
