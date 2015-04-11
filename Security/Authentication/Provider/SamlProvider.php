@@ -7,10 +7,10 @@
  */
 namespace PDias\SamlBundle\Security\Authentication\Provider;
 
-use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface,
+    Symfony\Component\Security\Core\User\UserProviderInterface,
+    Symfony\Component\Security\Core\Exception\AuthenticationException,
+    Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 use PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
 
@@ -30,6 +30,10 @@ class SamlProvider implements AuthenticationProviderInterface
 
     public function authenticate(TokenInterface $token)
     {
+        if (!$this->supports($token)) { 
+            return null;
+        } 
+        
         $user = $this->userProvider->loadUserByUsername($token->getUsername());
         
         if ($user) {
@@ -37,6 +41,7 @@ class SamlProvider implements AuthenticationProviderInterface
             $authenticatedToken->setUser($user);
             $authenticatedToken->setAuthenticated(true);
             $authenticatedToken->setAttributes($token->getAttributes());
+            $authenticatedToken->setDirectEntry($token->getDirectEntry());
 
             return $authenticatedToken;
         }
