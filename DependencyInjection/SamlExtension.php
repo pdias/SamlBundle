@@ -7,16 +7,23 @@
  */
 namespace PDias\SamlBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\ContainerBuilder,
+    Symfony\Component\Config\FileLocator,
+    Symfony\Component\HttpKernel\DependencyInjection\Extension,
+    Symfony\Component\DependencyInjection\Loader;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlExtension extends Extension
 {
+    // You can define what service definitions you want to load
+    protected $configFiles = array(
+        'services',
+        'security',
+        'twig'
+    );
+    
     public function load(array $configs, ContainerBuilder $container)
     {
         // Configuration
@@ -26,7 +33,10 @@ class SamlExtension extends Extension
         // Services
         $fileLocator = new FileLocator(__DIR__ . '/../Resources/config');
         $loader = new Loader\YamlFileLoader($container, $fileLocator);
-        $loader->load('services.yml');
+        
+        foreach ($this->configFiles as $filename) {
+            $loader->load($file = sprintf('%s.%s', $filename, 'yml'));
+        }
         
         // Set parameters
         if(!isset($config['service_provider'])) {
@@ -37,6 +47,10 @@ class SamlExtension extends Extension
 
         if(!isset($config['autoload_path'])) {
             throw new \InvalidArgumentException('SamlBundle says "Configured default path to SAML autoload is not defined."');
+        } else {
+            if(!\file_exists($config['autoload_path'])) {
+                throw new \InvalidArgumentException('SamlBundle says "Configured default path defines a file that does not exist."');
+            }
         }
         
         $container->setParameter('saml.autoload_path', $config['autoload_path']);
