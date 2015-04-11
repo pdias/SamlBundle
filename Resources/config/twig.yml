@@ -1,0 +1,13 @@
+#-------------------------------------------------------------------------------
+#
+# This file is part of the SamlBundle.
+#
+# (c) Paulo Dias <dias.paulo@gmail.com>
+#
+#-------------------------------------------------------------------------------
+services:
+    saml.twig_extension:
+        class: PDias\SamlBundle\Twig\Extension\SamlExtension
+        tags: [{ name: twig.extension }]
+        public: false
+        arguments: [@router]
