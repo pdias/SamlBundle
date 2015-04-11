@@ -1,0 +1,34 @@
+#-------------------------------------------------------------------------------
+#
+# This file is part of the SamlBundle.
+#
+# (c) Paulo Dias <dias.paulo@gmail.com>
+#
+#-------------------------------------------------------------------------------
+services:
+    #saml.security.authentication.entry_point:
+    #    public: false
+    #    class: PDias\SamlBundle\Security\EntryPoint\SamlAuthenticationEntryPoint
+    #    arguments: [@samlauth.service, @security.http_utils, {}]
+            
+    saml.security.authentication.provider:
+        class: PDias\SamlBundle\Security\Authentication\Provider\SamlProvider
+        arguments: ['', %kernel.cache_dir%/security/nonces]
+
+    saml.security.authentication.listener:
+        class: PDias\SamlBundle\Security\Firewall\SamlListener
+        arguments: [@security.token_storage, @security.context, @security.authentication.manager, @security.http_utils, @event_dispatcher, @samlauth.service, @?logger, {}]
+
+    saml.service.user.provider:
+        public: false
+        class: PDias\SamlBundle\Security\User\SamlUserProvider
+        arguments: [@samlauth.service]
+
+    saml.security.http.logout:
+        public: false
+        class: PDias\SamlBundle\Security\Handlers\SamlLogoutHandler
+        arguments: [@samlauth.service, @security.http_utils, {}]
+
+    #saml.security.authentication.success_handler:
+    #    class: PDias\SamlBundle\Security\EntryPoint\SamlAuthenticationEntryPoint
+    #    arguments: [%saml.service_provider%, %saml.authentication_field%]
