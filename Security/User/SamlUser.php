@@ -7,16 +7,17 @@
  */
 namespace PDias\SamlBundle\Security\User;
 
-use Symfony\Component\Security\Core\Role\RoleInterface;
-use Symfony\Component\Security\Core\Role\Role;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\EquatableInterface;
+use Symfony\Component\Security\Core\Role\RoleInterface,
+    Symfony\Component\Security\Core\Role\Role,
+    Symfony\Component\Security\Core\User\UserInterface,
+    Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlUser implements UserInterface, EquatableInterface
 {
+    private $id = null;
     private $username;
     private $roles;
     private $attributes;
@@ -122,6 +123,7 @@ class SamlUser implements UserInterface, EquatableInterface
     public function setAttributes(array $attributes)
     {
         $this->attributes = $attributes;
+        return $this;
     }
 
     /**
@@ -160,6 +162,7 @@ class SamlUser implements UserInterface, EquatableInterface
     public function setAttribute($name, $value)
     {
         $this->attributes[$name] = $value;
+        return $this;
     }
 
     /**
@@ -182,5 +185,26 @@ class SamlUser implements UserInterface, EquatableInterface
         }
 
         return true;
+    }
+    
+    //For compatiblity with other user bundles
+    
+    /**
+     * Sets id.
+     *
+     * @param integer $id  The id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    
+    /**
+     * Returns the id.
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
