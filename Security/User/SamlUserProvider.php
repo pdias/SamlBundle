@@ -7,36 +7,28 @@
  */
 namespace PDias\SamlBundle\Security\User;
 
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\User\UserProviderInterface,
+    Symfony\Component\Security\Core\User\UserInterface,
+    Symfony\Component\Security\Core\Exception\UsernameNotFoundException,
+    Symfony\Component\Security\Core\Exception\UnsupportedUserException,
+    PDias\SamlBundle\Saml\SamlAuth;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
  */
 class SamlUserProvider implements UserProviderInterface
 {
-    private $serviceprovider;
-    private $autoloadpath;
+    protected $samlAuth;
  
-    public function __construct($serviceprovider, $autoloadpath)
+    public function __construct(SamlAuth $samlAuth)
     {
-        $this->serviceprovider = $serviceprovider;
-        $this->autoloadpath = $autoloadpath;
-        
-        require $this->autoloadpath;
+        $this->samlAuth = $samlAuth;
     }
     
     public function loadUserByUsername($username)
     {
-        $auth = new \SimpleSAML_Auth_Simple($this->serviceprovider);
-        $auth->requireAuth(); 
-        
-        if ($auth->isAuthenticated()) {
-            $attributes = $auth->getAttributes();
-            $roles[] = 'ROLE_USER';
-            return new SamlUser($username, $roles, $attributes);
+        if ($this->samlAuth->isAuthenticated()) {
+            return new SamlUser($this->samlAuth->getUsername(), array('ROLE_USER'), $this->samlAuth->getAttributes());
         } else {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
