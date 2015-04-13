@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface,
  */
 class SamlUser implements UserInterface, EquatableInterface
 {
-    private $id = null;
+    //private $id = null;
     private $username;
     private $roles;
     private $attributes;
@@ -194,17 +194,17 @@ class SamlUser implements UserInterface, EquatableInterface
      *
      * @param integer $id  The id
      */
-    public function setId($id)
+    /*public function setId($id)
     {
         $this->id = $id;
         return $this;
-    }
+    }*/
     
     /**
      * Returns the id.
      */
-    public function getId()
+    /*public function getId()
     {
         return $this->id;
-    }
+    }*/
 }
