@@ -9,8 +9,7 @@ namespace PDias\SamlBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Response,
-    Symfony\Component\HttpFoundation\Request,
-    Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+    Symfony\Component\HttpFoundation\Request;
 
 /**
  * SamlBundle security controller.
