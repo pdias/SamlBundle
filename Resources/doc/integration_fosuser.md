@@ -54,4 +54,5 @@ security:
 
 The option ***direct_entry*** in SAML must be set to ***false***. ***By default this option is true*** and if it is ***true*** it goes directly to the SAML login window.
 
+Now we need to add a service (*saml.backend.fosuser.provider*) in the ***custom user provider**.
 ....
