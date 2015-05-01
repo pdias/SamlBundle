@@ -95,12 +95,15 @@ security:
     firewalls:
 
         saml_secured:
-            provider: samlservice
             saml:
-            context: saml_context
+                provider: samlservice
+                login_path: /login-saml
+                check_path: /login-check-saml
+                default_target_path: /
+                always_use_default_target_path: true
             logout:
-              path: /logout
-              target: /
+                path:   /logout-saml
+                target: /
 ```
 
 Step 5: Import SamlBundle routing
