@@ -73,7 +73,7 @@ backend_saml_logout:
 
 ```
 
-***Don't forget to importe this routing file.***
+***Don't forget to import this routing file.***
 
 ``` yml
 # app/config/routing.yml
