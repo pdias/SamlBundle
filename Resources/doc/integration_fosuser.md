@@ -52,7 +52,36 @@ security:
             anonymous: true
 ```
 
-The option ***direct_entry*** in SAML must be set to ***false***. ***By default this option is true*** and if it is ***true*** it goes directly to the SAML login window.
+The option **direct_entry** in SAML must be set to **false**. ***By default this option is true*** and if it is **true** it goes directly to the SAML login window.
+
+You need to have separate routes than your **FOSUserBundle**.
+
+``` yml
+# UserBundle\Resources\config\routing\backend_security.yml
+
+#-------------------------------------------------------------------------------
+# Backend Security
+#-------------------------------------------------------------------------------
+backend_saml_login:
+    pattern: /login-saml
+
+backend_saml_login_check:
+    pattern: /login-check-saml
+
+backend_saml_logout:
+    pattern: /logout-saml
+
+```
+
+***Don't forget to importe this routing file.***
+
+``` yml
+# app/config/routing.yml
+
+backend_security:
+    resource: @UserBundle/Resources/config/routing/backend_security.yml
+
+```
 
 Now we need to add a service (*saml.backend.fosuser.provider*) in the ***custom user provider***.
 
