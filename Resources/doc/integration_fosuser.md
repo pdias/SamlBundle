@@ -30,7 +30,6 @@ security:
 
         admin:
             switch_user: true
-            context: gaei
             pattern: /admin(.*)
             form_login:
                 provider: fos_userbundle
@@ -52,5 +51,7 @@ security:
                 target: /admin/login
             anonymous: true
 ```
+
+The option ***direct_entry*** must be set to ***false***. ***By default this option is true*** and if it is ***true*** it goes directly to the so SAML login window.
 
 ....
