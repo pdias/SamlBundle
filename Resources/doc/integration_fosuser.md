@@ -56,6 +56,18 @@ The option ***direct_entry*** in SAML must be set to ***false***. ***By default 
 
 Now we need to add a service (*saml.backend.fosuser.provider*) in the ***custom user provider***.
 
+``` xml
+# UserBundle\Resources\config\services.xml
+
+    <service id="saml.backend.fosuser.provider" class="UserBundle\Security\User\FosBackendSamlUserProvider">
+        <argument type="service" id="samlauth.service"/>
+        <argument type="service" id="fos_user.user_manager"/>
+    </service>
+
+
+```
+
+
 ``` php
 # UserBundle\Security\User\FosBackendSamlUserProvider.php
 
