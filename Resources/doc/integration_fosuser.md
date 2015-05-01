@@ -68,6 +68,9 @@ Now we need to add a service (*saml.backend.fosuser.provider*) in the ***custom 
 ```
 
 
+The class:
+
+
 ``` php
 # UserBundle\Security\User\FosBackendSamlUserProvider.php
 
