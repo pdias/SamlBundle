@@ -23,8 +23,8 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username
 
-        samlservice:
-            id: saml.service.user.provider
+        backend_samlservice:
+            id: saml.backend.fosuser.provider
 
     firewalls:
 
@@ -40,7 +40,7 @@ security:
                 use_forward: false
                 use_referer: true
             saml:
-                provider: samlservice
+                provider: backend_samlservice
                 direct_entry: false
                 login_path: /admin/login-saml
                 check_path: /admin/login-check-saml
@@ -52,6 +52,6 @@ security:
             anonymous: true
 ```
 
-The option ***direct_entry*** must be set to ***false***. ***By default this option is true*** and if it is ***true*** it goes directly to the so SAML login window.
+The option ***direct_entry*** in SAML must be set to ***false***. ***By default this option is true*** and if it is ***true*** it goes directly to the SAML login window.
 
 ....
