@@ -59,6 +59,58 @@ Now we need to add a service (*saml.backend.fosuser.provider*) in the ***custom 
 ``` php
 # UserBundle\Security\User\FosBackendSamlUserProvider.php
 
+namespace UserBundle\Security\User;
+
+use Symfony\Component\Security\Core\User\UserProviderInterface,
+    Symfony\Component\Security\Core\User\UserInterface,
+    Symfony\Component\Security\Core\Exception\UsernameNotFoundException,
+    Symfony\Component\Security\Core\Exception\UnsupportedUserException,
+    PDias\SamlBundle\Security\User\SamlUser,
+    PDias\SamlBundle\Saml\SamlAuth;
+
+class FosBackendSamlUserProvider implements UserProviderInterface
+{
+    protected $samlAuth;
+    protected $userManager;
+ 
+    public function __construct(SamlAuth $samlAuth, $userManager)
+    {
+        $this->samlAuth = $samlAuth;
+        $this->userManager = $userManager;
+    }
+    
+    public function loadUserByUsername($username)
+    {
+        if ($this->samlAuth->isAuthenticated()) {
+            if($user = $this->findUserBySamlId($this->samlAuth->getUsername())) {
+                $samlUser = new SamlUser($this->samlAuth->getUsername(), $user->getRoles(), $this->samlAuth->getAttributes());
+
+                return $samlUser;
+            }
+        } else {
+            throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
+        }
+    }
+
+    public function refreshUser(UserInterface $user)
+    {
+        if (!$user instanceof SamlUser) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
+        }
+
+        return $this->loadUserByUsername($user->getUsername());
+    }
+
+    public function supportsClass($class)
+    {
+        return $this->userProvider->supportsClass($class);
+    }
+    
+    public function findUserBySamlId($samlId)
+    {
+        return $this->userManager->findUserBy(array('samlId' => $samlId));
+    }
+}
 ```
 
 
