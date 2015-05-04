@@ -146,7 +146,8 @@ class SamlAuth
     {
         if($this->isAuthenticated()) {
             if(\array_key_exists($this->authentication_field, $this->getAttributes())) {
-                return $this->getAttributes()[$this->authentication_field][0];
+                $attributes = $this->getAttributes();
+                return $attributes[$this->authentication_field][0];
             } else {
                 throw new \InvalidArgumentException(sprintf('Your provider must return attribute "%s".', $this->authentication_field));
             }
