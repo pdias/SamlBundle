@@ -19,15 +19,14 @@ use Symfony\Component\HttpFoundation\Response,
     Symfony\Component\Security\Http\Event\InteractiveLoginEvent,
     Symfony\Component\Security\Http\SecurityEvents,
     Symfony\Component\EventDispatcher\EventDispatcherInterface,
-    Symfony\Component\HttpFoundation\ParameterBag;
-
-use PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Http\HttpUtils;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use PDias\SamlBundle\Saml\SamlAuth;
+    Symfony\Component\HttpFoundation\ParameterBag,
+    PDias\SamlBundle\Security\Authentication\Token\SamlUserToken,
+    Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\Security\Core\Security,
+    Symfony\Component\Security\Http\HttpUtils,
+    Psr\Log\LoggerInterface,
+    Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface,
+    PDias\SamlBundle\Saml\SamlAuth;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
@@ -35,7 +34,6 @@ use PDias\SamlBundle\Saml\SamlAuth;
 class SamlListener implements ListenerInterface
 {
     protected $tokenStorage;
-    protected $securityContext;
     protected $authenticationManager;
     protected $eventDispatcher;
     protected $samlAuth;
@@ -45,7 +43,6 @@ class SamlListener implements ListenerInterface
     
     public function __construct(
             TokenStorageInterface $tokenStorage,
-            SecurityContextInterface $securityContext,
             AuthenticationManagerInterface $authenticationManager,
             HttpUtils $httpUtils,
             EventDispatcherInterface $eventDispatcher = null,
@@ -54,7 +51,6 @@ class SamlListener implements ListenerInterface
             array $options = array())
     {
         $this->tokenStorage = $tokenStorage;
-        $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
         $this->httpUtils = $httpUtils;
         $this->eventDispatcher = $eventDispatcher;
@@ -104,7 +100,6 @@ class SamlListener implements ListenerInterface
         }
 
         $this->tokenStorage->setToken($token);
-        //$this->securityContext->setToken($token);
 
         $session = $request->getSession();
         $session->remove(Security::AUTHENTICATION_ERROR);
