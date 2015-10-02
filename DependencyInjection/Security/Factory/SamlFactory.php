@@ -58,7 +58,7 @@ class SamlFactory extends AbstractFactory
     {
         $listenerId = $this->getListenerId();
         $listener = new DefinitionDecorator($listenerId);
-        $listener->replaceArgument(9, $config);
+        $listener->replaceArgument(8, $config);
         $listenerId .= '.'.$id;
         $container->setDefinition($listenerId, $listener);
         
