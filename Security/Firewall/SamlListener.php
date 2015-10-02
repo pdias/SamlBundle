@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response,
     Symfony\Component\Security\Core\Exception\AuthenticationException,
     Symfony\Component\Security\Core\SecurityContextInterface,
     Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface,
+    Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface,
+    Symfony\Component\Security\Http\AccessMapInterface,
     Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface,
     Symfony\Component\Security\Core\Authentication\Token\TokenInterface,
     Symfony\Component\Security\Http\Event\InteractiveLoginEvent,
@@ -35,6 +37,8 @@ class SamlListener implements ListenerInterface
 {
     protected $tokenStorage;
     protected $authenticationManager;
+    protected $accessDecisionManager;
+    protected $map;
     protected $eventDispatcher;
     protected $samlAuth;
     protected $httpUtils;
@@ -44,6 +48,8 @@ class SamlListener implements ListenerInterface
     public function __construct(
             TokenStorageInterface $tokenStorage,
             AuthenticationManagerInterface $authenticationManager,
+            AccessDecisionManagerInterface $accessDecisionManager,
+            AccessMapInterface $map,
             HttpUtils $httpUtils,
             EventDispatcherInterface $eventDispatcher = null,
             SamlAuth $samlAuth,
@@ -52,6 +58,8 @@ class SamlListener implements ListenerInterface
     {
         $this->tokenStorage = $tokenStorage;
         $this->authenticationManager = $authenticationManager;
+        $this->accessDecisionManager = $accessDecisionManager;
+        $this->map = $map;
         $this->httpUtils = $httpUtils;
         $this->eventDispatcher = $eventDispatcher;
         $this->samlAuth = $samlAuth;
@@ -75,9 +83,16 @@ class SamlListener implements ListenerInterface
                 return $event->setResponse($authToken);
             }
         } catch (\Exception $e) {
+            $token = $this->tokenStorage->getToken();
+            list($attributes) = $this->map->getPatterns($request);
+
+            if (null !== $token && null !== $attributes) {
+                if ($token->isAuthenticated() && $this->accessDecisionManager->decide($token, $attributes, $request)) {
+                    return;
+                }
+            }
 
             $this->requestSaml($request);
-
             $token = $this->tokenStorage->getToken();
             if ($token instanceof SamlUserToken/* && $this->providerKey === $token->getProviderKey()*/) {
                  $this->tokenStorage->setToken(null);
