@@ -10,4 +10,4 @@ services:
         class: PDias\SamlBundle\Twig\Extension\SamlExtension
         tags: [{ name: twig.extension }]
         public: false
-        arguments: [@router]
+        arguments: ['@router']
