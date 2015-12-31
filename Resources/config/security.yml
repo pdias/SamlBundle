@@ -17,17 +17,17 @@ services:
 
     saml.security.authentication.listener:
         class: PDias\SamlBundle\Security\Firewall\SamlListener
-        arguments: [@security.token_storage, @security.authentication.manager, @security.access.decision_manager, @security.access_map, @security.http_utils, @event_dispatcher, @samlauth.service, @?logger, {}]
+        arguments: ['@security.token_storage', '@security.authentication.manager', '@security.access.decision_manager', '@security.access_map', '@security.http_utils', '@event_dispatcher', '@samlauth.service', '@?logger', {}]
 
     saml.service.user.provider:
         public: false
         class: PDias\SamlBundle\Security\User\SamlUserProvider
-        arguments: [@samlauth.service]
+        arguments: ['@samlauth.service']
 
     saml.security.http.logout:
         public: false
         class: PDias\SamlBundle\Security\Handlers\SamlLogoutHandler
-        arguments: [@samlauth.service, @security.http_utils, {}]
+        arguments: ['@samlauth.service', '@security.http_utils', {}]
 
     #saml.security.authentication.success_handler:
     #    class: PDias\SamlBundle\Security\EntryPoint\SamlAuthenticationEntryPoint
