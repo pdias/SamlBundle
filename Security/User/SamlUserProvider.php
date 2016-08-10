@@ -19,16 +19,18 @@ use Symfony\Component\Security\Core\User\UserProviderInterface,
 class SamlUserProvider implements UserProviderInterface
 {
     protected $samlAuth;
+    protected $attributes;
  
     public function __construct(SamlAuth $samlAuth)
     {
         $this->samlAuth = $samlAuth;
+        $this->attributes = $this->samlAuth->getAttributes();
     }
     
     public function loadUserByUsername($username)
     {
         if ($this->samlAuth->isAuthenticated()) {
-            return new SamlUser($this->samlAuth->getUsername(), array('ROLE_USER'), $this->samlAuth->getAttributes());
+            return new SamlUser($this->samlAuth->getUsername(), array('ROLE_USER'), $this->attributes);
         }
 
         throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
@@ -46,5 +48,10 @@ class SamlUserProvider implements UserProviderInterface
     public function supportsClass($class)
     {
         return $class === 'PDias\SamlBundle\Security\User\SamlUser';
+    }
+    
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 }
