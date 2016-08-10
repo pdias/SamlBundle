@@ -40,7 +40,7 @@ class SamlProvider implements AuthenticationProviderInterface
             $authenticatedToken = new SamlUserToken($user->getRoles());
             $authenticatedToken->setUser($user);
             $authenticatedToken->setAuthenticated(true);
-            $authenticatedToken->setAttributes($token->getAttributes());
+            $authenticatedToken->setAttributes($this->userProvider->getAttributes());
             $authenticatedToken->setDirectEntry($token->getDirectEntry());
 
             return $authenticatedToken;
