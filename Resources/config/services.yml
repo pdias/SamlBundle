@@ -8,9 +8,9 @@
 services:
     samlauth.service:
         class: PDias\SamlBundle\Saml\SamlAuth
-        file: %saml.autoload_path%
+        file: '%saml.autoload_path%'
         public: false
         arguments:
-            - %saml.service_provider%
+            - '%saml.service_provider%'
         calls:
-            - [setAuthenticationField, ["%saml.authentication_field%"]]
+            - [setAuthenticationField, ['%saml.authentication_field%']]
