@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
  * This file is part of the SamlBundle.
  *
@@ -49,7 +49,7 @@ class SamlExtension extends Extension
             throw new \InvalidArgumentException('SamlBundle says "Configured default path to SAML autoload is not defined."');
         } else {
             if(!\file_exists($config['autoload_path'])) {
-                throw new \InvalidArgumentException('SamlBundle says "Configured default path defines a file that does not exist."');
+                throw new \InvalidArgumentException('SamlBundle says "Configured default path [' . $config['autoload_path'] . '] defines a file that does not exist."');
             }
         }
         
