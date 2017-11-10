@@ -6,16 +6,16 @@
 #
 #-------------------------------------------------------------------------------
 saml_login:
-    pattern: /login-saml
+    path: /login-saml
     defaults:
         _controller: SamlBundle:Security:login
 
 saml_login_check:
-    pattern: /login-check-saml
+    path: /login-check-saml
     defaults:
         _controller: SamlBundle:Security:check
 
 saml_logout:
-    pattern: /logout-saml
+    path: /logout-saml
     defaults:
         _controller: SamlBundle:Security:logout
