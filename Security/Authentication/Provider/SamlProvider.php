@@ -10,9 +10,9 @@ namespace PDias\SamlBundle\Security\Authentication\Provider;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface,
     Symfony\Component\Security\Core\User\UserProviderInterface,
     Symfony\Component\Security\Core\Exception\AuthenticationException,
-    Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-
-use PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
+    Symfony\Component\Security\Core\Authentication\Token\TokenInterface,
+    Symfony\Component\Security\Core\User\UserCheckerInterface,
+    PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
 
 /**
  * @author: Paulo Dias <dias.paulo@gmail.com>
@@ -20,23 +20,29 @@ use PDias\SamlBundle\Security\Authentication\Token\SamlUserToken;
 class SamlProvider implements AuthenticationProviderInterface
 {
     private $userProvider;
+    private $userChecker;
     private $cacheDir;
 
-    public function __construct(UserProviderInterface $userProvider, $cacheDir)
+    public function __construct(UserProviderInterface $userProvider, UserCheckerInterface $userChecker, $cacheDir)
     {
         $this->userProvider = $userProvider;
+        $this->userChecker  = $userChecker;
         $this->cacheDir     = $cacheDir;
     }
 
     public function authenticate(TokenInterface $token)
     {
-        if (!$this->supports($token)) { 
-            return null;
-        } 
-        
-        $user = $this->userProvider->loadUserByUsername($token->getUsername());
+        $user = $token->getUser();
+
+        if(null !== $user) {
+            $this->userChecker->checkPreAuth($user);
+        } else {
+            $user = $this->userProvider->loadUserByUsername($token->getUsername());
+        }
         
         if ($user) {
+            $this->userChecker->checkPreAuth($user);
+
             $authenticatedToken = new SamlUserToken($user->getRoles());
             $authenticatedToken->setUser($user);
             $authenticatedToken->setAuthenticated(true);
