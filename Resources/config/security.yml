@@ -13,7 +13,7 @@ services:
             
     saml.security.authentication.provider:
         class: PDias\SamlBundle\Security\Authentication\Provider\SamlProvider
-        arguments: ['', '%kernel.cache_dir%/security/nonces']
+        arguments: ['', '@security.user_checker', '%kernel.cache_dir%/security/nonces']
 
     saml.security.authentication.listener:
         class: PDias\SamlBundle\Security\Firewall\SamlListener
