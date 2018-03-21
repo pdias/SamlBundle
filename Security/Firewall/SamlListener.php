@@ -128,8 +128,7 @@ class SamlListener implements ListenerInterface
     
     private function requestSaml(Request $request)
     {
-        if($this->options['direct_entry'] || $this->httpUtils->checkRequestPath($request, $this->options['check_path']))
-        {
+        if($this->options['direct_entry'] || $this->httpUtils->checkRequestPath($request, $this->options['check_path'])) {
             $this->samlAuth->setLoginReturn($this->getReturnUrl($request));
             $this->samlAuth->requireAuth();
         }
