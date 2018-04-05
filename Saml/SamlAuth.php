@@ -27,16 +27,26 @@ class SamlAuth
     public function __construct($provider)
     {
         $this->provider = $provider;
-        $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
-        
-        $session = \SimpleSAML_Session::getSessionFromRequest();
+
+        if (\class_exists('\SimpleSAML\Auth\Simple')) {
+            $this->auth = new SimpleSAML\Auth\Simple($this->provider);
+            $session = SimpleSAML\Session::getSessionFromRequest();
+        } else {
+            $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
+            $session = \SimpleSAML_Session::getSessionFromRequest();
+        }
+
         $session->cleanup();
     }
     
     public function setProvider($provider)
     {
         $this->provider = $provider;
-        $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
+        if (\class_exists('\SimpleSAML\Auth\Simple')) {
+            $this->auth = new SimpleSAML\Auth\Simple($this->provider);
+        } else {
+            $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
+        }
         return $this;
     }
     
