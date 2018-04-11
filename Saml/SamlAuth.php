@@ -36,7 +36,7 @@ class SamlAuth
             $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
         }
 
-        $session = SimpleSAML\Session::getSessionFromRequest();
+        $session = \SimpleSAML_Session::getSessionFromRequest();
         $session->cleanup();
     }
     
