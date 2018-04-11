@@ -8,6 +8,8 @@
  */
 namespace PDias\SamlBundle\Saml;
 
+use SimpleSAML\Auth\Simple;
+
 /**
  * Handles the class SimpleSAML_Auth_Simple
  *
@@ -29,13 +31,12 @@ class SamlAuth
         $this->provider = $provider;
 
         if (\class_exists('\SimpleSAML\Auth\Simple')) {
-            $this->auth = new SimpleSAML\Auth\Simple($this->provider);
-            $session = SimpleSAML\Session::getSessionFromRequest();
+            $this->auth = new Simple($this->provider);
         } else {
             $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
-            $session = \SimpleSAML_Session::getSessionFromRequest();
         }
 
+        $session = SimpleSAML\Session::getSessionFromRequest();
         $session->cleanup();
     }
     
