@@ -44,7 +44,7 @@ class SamlAuth
     {
         $this->provider = $provider;
         if (\class_exists('\SimpleSAML\Auth\Simple')) {
-            $this->auth = new SimpleSAML\Auth\Simple($this->provider);
+            $this->auth = new Simple($this->provider);
         } else {
             $this->auth = new \SimpleSAML_Auth_Simple($this->provider);
         }
