@@ -20,7 +20,8 @@ class SamlExtension extends Extension
     // You can define what service definitions you want to load
     protected $configFiles = array(
         'services',
-        'security'
+        'security',
+        'twig'
     );
     
     public function load(array $configs, ContainerBuilder $container)
