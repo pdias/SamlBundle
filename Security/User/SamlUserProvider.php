@@ -30,10 +30,10 @@ class SamlUserProvider implements UserProviderInterface
     public function loadUserByUsername($username)
     {
         if ($this->samlAuth->isAuthenticated()) {
-            return new SamlUser($this->samlAuth->getUsername(), array('ROLE_USER'), $this->attributes);
+            return new SamlUser($this->samlAuth->getUsername(), ['ROLE_USER'], $this->attributes);
         }
 
-        throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
+        throw new UsernameNotFoundException(\sprintf('Username "%s" does not exist.', $username));
     }
 
     public function refreshUser(UserInterface $user)
