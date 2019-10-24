@@ -54,7 +54,7 @@ class SamlListener implements ListenerInterface
             EventDispatcherInterface $eventDispatcher = null,
             SamlAuth $samlAuth,
             LoggerInterface $logger = null,
-            array $options = array())
+            array $options = [])
     {
         $this->tokenStorage = $tokenStorage;
         $this->authenticationManager = $authenticationManager;
@@ -94,12 +94,10 @@ class SamlListener implements ListenerInterface
 
             $this->requestSaml($request);
             $token = $this->tokenStorage->getToken();
-            if ($token instanceof SamlUserToken/* && $this->providerKey === $token->getProviderKey()*/) {
+            if ($token instanceof SamlUserToken) {
                  $this->tokenStorage->setToken(null);
             }
             return;
-            
-            //throw new AuthenticationException('The Saml user could not be retrieved from the session.');
         }
         
         // By default deny authorization
@@ -139,8 +137,7 @@ class SamlListener implements ListenerInterface
         if($this->options['always_use_default_target_path'] && isset($this->options['default_target_path'])) {
             return $this->httpUtils->generateUri($request, $this->options['default_target_path']);
         }
-        
-        //return $this->httpUtils->generateUri($request, $this->options['login_return']);
+       
         return $this->httpUtils->generateUri($request, '/');
     }
 }
