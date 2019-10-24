@@ -29,7 +29,7 @@ class SamlLogoutHandler implements LogoutHandlerInterface
     protected $samlAuth;
     protected $httpUtils;
 
-    public function __construct(SamlAuth $samlAuth, HttpUtils $httpUtils, array $options = array())
+    public function __construct(SamlAuth $samlAuth, HttpUtils $httpUtils, array $options = [])
     {
         $this->samlAuth = $samlAuth;
         $this->httpUtils = $httpUtils;
