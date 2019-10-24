@@ -78,8 +78,8 @@ class SamlFactory extends AbstractFactory
             //Add logout handler
             $container
                 ->setDefinition($samlListenerId, new ChildDefinition('saml.security.http.logout'))
-                ->replaceArgument(2, array_intersect_key($config, $this->options));
-            $logoutListener->addMethodCall('addHandler', array(new Reference($samlListenerId)));
+                ->replaceArgument(2, \array_intersect_key($config, $this->options));
+            $logoutListener->addMethodCall('addHandler', [new Reference($samlListenerId)]);
         }
     }
 }
