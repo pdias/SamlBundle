@@ -21,7 +21,7 @@ class SamlOptions
 {
     protected $options;
 
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         $this->options = new ParameterBag($options);
     }
