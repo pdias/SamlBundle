@@ -18,11 +18,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder,
 class SamlExtension extends Extension
 {
     // You can define what service definitions you want to load
-    protected $configFiles = array(
+    protected $configFiles = [
         'services',
         'security',
         'twig'
-    );
+    ];
     
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -35,7 +35,7 @@ class SamlExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, $fileLocator);
         
         foreach ($this->configFiles as $filename) {
-            $loader->load($file = sprintf('%s.%s', $filename, 'yml'));
+            $loader->load($file = \sprintf('%s.%s', $filename, 'yml'));
         }
         
         // Set parameters
