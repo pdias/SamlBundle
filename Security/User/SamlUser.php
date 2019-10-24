@@ -22,11 +22,11 @@ class SamlUser implements UserInterface, EquatableInterface
     private $roles;
     private $attributes;
 
-    public function __construct($username, array $roles = array(), array $attributes = array())
+    public function __construct($username, array $roles = [], array $attributes = [])
     {
         $this->username = $username;
         
-        $this->attributes = array();
+        $this->attributes = [];
         foreach($attributes as $key => $attribute){
             if(count($attribute)==1) {
                 $this->setAttribute($key, $attribute[0]);
@@ -40,7 +40,7 @@ class SamlUser implements UserInterface, EquatableInterface
             if (is_string($role)) {
                 $role = new Role($role);
             } elseif (!$role instanceof RoleInterface) {
-                throw new \InvalidArgumentException(sprintf('Roles must be an array of strings, or RoleInterface instances, but got %s.', gettype($role)));
+                throw new \InvalidArgumentException(\sprintf('Roles must be an array of strings, or RoleInterface instances, but got %s.', gettype($role)));
             }
 
             $this->roles[] = $role;
@@ -82,7 +82,7 @@ class SamlUser implements UserInterface, EquatableInterface
         if (is_string($role)) {
             $role = new Role($role);
         } elseif (!$role instanceof RoleInterface) {
-            throw new \InvalidArgumentException(sprintf('Role must be a string or RoleInterface instance, but got %s.', gettype($role)));
+            throw new \InvalidArgumentException(\sprintf('Role must be a string or RoleInterface instance, but got %s.', gettype($role)));
         }
         
         if(!\in_array($role, $this->roles)) {
@@ -147,7 +147,7 @@ class SamlUser implements UserInterface, EquatableInterface
     public function getAttribute($name)
     {
         if (!array_key_exists($name, $this->attributes)) {
-            throw new \InvalidArgumentException(sprintf('This token has no "%s" attribute.', $name));
+            throw new \InvalidArgumentException(\sprintf('This token has no "%s" attribute.', $name));
         }
 
         return $this->attributes[$name];
@@ -186,25 +186,4 @@ class SamlUser implements UserInterface, EquatableInterface
 
         return true;
     }
-    
-    //For compatiblity with other user bundles
-    
-    /**
-     * Sets id.
-     *
-     * @param integer $id  The id
-     */
-    /*public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }*/
-    
-    /**
-     * Returns the id.
-     */
-    /*public function getId()
-    {
-        return $this->id;
-    }*/
 }
