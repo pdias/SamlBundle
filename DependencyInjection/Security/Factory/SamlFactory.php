@@ -9,7 +9,7 @@ namespace PDias\SamlBundle\DependencyInjection\Security\Factory;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder,
     Symfony\Component\DependencyInjection\Reference,
-    Symfony\Component\DependencyInjection\DefinitionDecorator,
+    Symfony\Component\DependencyInjection\ChildDefinition,
     Symfony\Component\Config\Definition\Builder\NodeDefinition,
     Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\AbstractFactory;
 
@@ -48,7 +48,7 @@ class SamlFactory extends AbstractFactory
     {
         $authProviderId = 'security.authentication.provider.saml.'.$id;
         $container
-            ->setDefinition($authProviderId, new DefinitionDecorator('saml.security.authentication.provider'))
+            ->setDefinition($authProviderId, new ChildDefinition('saml.security.authentication.provider'))
             ->replaceArgument(0, new Reference($userProviderId));
         
         return $authProviderId;
@@ -57,7 +57,7 @@ class SamlFactory extends AbstractFactory
     protected function createListener($container, $id, $config, $userProvider)
     {
         $listenerId = $this->getListenerId();
-        $listener = new DefinitionDecorator($listenerId);
+        $listener = new ChildDefinition($listenerId);
         $listener->replaceArgument(8, $config);
         $listenerId .= '.'.$id;
         $container->setDefinition($listenerId, $listener);
@@ -91,7 +91,7 @@ class SamlFactory extends AbstractFactory
 
             //Add logout handler
             $container
-                ->setDefinition($samlListenerId, new DefinitionDecorator('saml.security.http.logout'))
+                ->setDefinition($samlListenerId, new ChildDefinition('saml.security.http.logout'))
                 ->replaceArgument(2, array_intersect_key($config, $this->options));
             $logoutListener->addMethodCall('addHandler', array(new Reference($samlListenerId)));
         }
