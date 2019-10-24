@@ -34,8 +34,8 @@ class SamlExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array( 
-            new \Twig_SimpleFunction('samlLoginUrl', array($this, 'getLoginUrl'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('samlLogoutUrl', array($this, 'getLogoutUrl'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('samlLoginUrl', [$this, 'getLoginUrl'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('samlLogoutUrl', [$this, 'getLogoutUrl'], ['is_safe' => ['html']]),
         ); 
     } 
 
