@@ -96,9 +96,9 @@ class SamlAuth
     
     public function requireAuth()
     {
-        $options = array('KeepPost' => $this->keeppost);
+        $options = ['KeepPost' => $this->keeppost];
         if($this->loginreturn) {
-            $options = \array_merge($options, array('ReturnTo' => $this->loginreturn));
+            $options = \array_merge($options, ['ReturnTo' => $this->loginreturn]);
         }
         
         $this->auth->requireAuth($options);
@@ -134,7 +134,7 @@ class SamlAuth
             if(\array_key_exists($this->authentication_field, $this->getAttributes())) {
                 return $this->authentication_field;
             } else {
-                throw new \InvalidArgumentException(sprintf('Your provider must return attribute "%s".', $this->authentication_field));
+                throw new \InvalidArgumentException(\sprintf('Your provider must return attribute "%s".', $this->authentication_field));
             }
         }
         
@@ -147,7 +147,7 @@ class SamlAuth
             if(\array_key_exists($authenticationField, $this->getAttributes())) {
                 $this->authentication_field = $authenticationField;
             } else {
-                throw new \InvalidArgumentException(sprintf('Your provider must return attribute "%s".', $this->authentication_field));
+                throw new \InvalidArgumentException(\sprintf('Your provider must return attribute "%s".', $this->authentication_field));
             }
         } else {
             $this->authentication_field = $authenticationField;
@@ -163,7 +163,7 @@ class SamlAuth
                 $attributes = $this->getAttributes();
                 return $attributes[$this->authentication_field][0];
             } else {
-                throw new \InvalidArgumentException(sprintf('Your provider must return attribute "%s".', $this->authentication_field));
+                throw new \InvalidArgumentException(\sprintf('Your provider must return attribute "%s".', $this->authentication_field));
             }
         }
     }
