@@ -35,7 +35,7 @@ class SamlUser implements UserInterface, EquatableInterface
             }
         }
         
-        $this->roles = array();
+        $this->roles = [];
         foreach ($roles as $role) {
             if (is_string($role)) {
                 $role = new Role($role);
@@ -79,7 +79,7 @@ class SamlUser implements UserInterface, EquatableInterface
      */
     public function addRole($role)
     {
-        if (is_string($role)) {
+        if (\is_string($role)) {
             $role = new Role($role);
         } elseif (!$role instanceof RoleInterface) {
             throw new \InvalidArgumentException(\sprintf('Role must be a string or RoleInterface instance, but got %s.', gettype($role)));
@@ -100,9 +100,9 @@ class SamlUser implements UserInterface, EquatableInterface
         foreach ($this->roles as $k => $r) { 
             $roles[$k] = $r instanceof RoleInterface ? $r->getRole() : (string) $r;  
         } 
-        $roles = array_flip(array_flip($roles));
+        $roles = \array_flip(array_flip($roles));
         
-        return in_array($role, $roles);
+        return \in_array($role, $roles);
     }
     
     /**
@@ -134,7 +134,7 @@ class SamlUser implements UserInterface, EquatableInterface
      */
     public function hasAttribute($name)
     {
-        return array_key_exists($name, $this->attributes);
+        return \array_key_exists($name, $this->attributes);
     }
     
     /**
@@ -146,7 +146,7 @@ class SamlUser implements UserInterface, EquatableInterface
      */
     public function getAttribute($name)
     {
-        if (!array_key_exists($name, $this->attributes)) {
+        if (!\array_key_exists($name, $this->attributes)) {
             throw new \InvalidArgumentException(\sprintf('This token has no "%s" attribute.', $name));
         }
 
